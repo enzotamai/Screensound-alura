@@ -30,6 +30,7 @@ public class Principal {
                     2 - Cadastrar músicas
                     3 - Listar músicas
                     4 - Buscar músicas do artista
+                    5 - Buscar todas as músicas da lista
                     
                     
                     9 - Sair
@@ -52,6 +53,9 @@ public class Principal {
                 case 4:
                     buscarMusicaPorArtista();
                     break;
+                case 5:
+                    buscarTodasAsMusicas();
+                    break;
                 case 9:
                     System.out.println("Encerrando a aplicação");
                     break;
@@ -62,6 +66,19 @@ public class Principal {
 
 
         
+    }
+
+    private void buscarTodasAsMusicas() {
+        List<Musica> musicas = repositorio.buscaTodasAsMusicas();
+
+        if (musicas.isEmpty()) {
+            System.out.println("Não há músicas cadastradas.");
+            return;
+        }
+
+        System.out.println("\n***** Músicas Cadastradas *****");
+        musicas.forEach(System.out::println);
+        System.out.println("*******************************");
     }
 
 
